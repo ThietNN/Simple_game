@@ -6,13 +6,12 @@ constructor(image, top, left, size) {
     this.size = size;
     this.speed = 20;
 }
-    getHeroElement(){
+    getCharacterElement(){
         return '<img width="'+ this.size + '"' +
             ' height="'+ this.size + '"' +
             ' src="' + this.image +'"' +
             ' style="top: '+this.top+'px; left:'+this.left+'px;position:absolute;" />';
     }
-
     moveRight(){
         this.left += this.speed;
         console.log(this.left);
@@ -32,6 +31,7 @@ constructor(image, top, left, size) {
     changeSpeed(speed){
     this.speed += speed;
     }
+
 }
 
 var doraemon = new Character('doraemon.png',20, 30, 200);
@@ -39,10 +39,8 @@ var doraemon = new Character('doraemon.png',20, 30, 200);
 function start(){
     if(doraemon.left < window.innerWidth - doraemon.size){
         doraemon.moveRight();
-    }else {
-        doraemon.moveDown();
     }
-    document.getElementById('game').innerHTML = doraemon.getHeroElement();
+    document.getElementById('game').innerHTML = doraemon.getCharacterElement();
     setTimeout(start, 500)
 }
 
